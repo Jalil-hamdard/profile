@@ -1,5 +1,8 @@
 import { useState, useRef, useCallback } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
+import Contact from '../components/Conact.jsx'
+
+
 
 // —— Hero ——
 function ArrowUpIcon({ className }) {
@@ -135,6 +138,7 @@ export default function Landing() {
 
   return (
     <>
+      
       {/* Hero */}
       <section className="relative min-h-[750px] flex items-center justify-center overflow-hidden bg-white pt-20">
         <div className="absolute top-0 left-0 w-full h-full opacity-30 pointer-events-none">
@@ -346,174 +350,8 @@ export default function Landing() {
         </div>
       </section>
 
-   {/* Contact Section */}
-<section id="contact" className="section-normal relative overflow-hidden bg-white py-12 px-4">
-  <div className="container-main relative max-w-5xl mx-auto">
-    <div className="rounded-3xl border border-zinc-200 bg-white shadow-xl overflow-hidden">
-      {/* Changed to grid-cols-1 for mobile, lg:grid-cols-2 for desktop */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[420px]">
-        
-        {/* Left Column: Form */}
-        <div className="p-6 sm:p-8 md:p-10 lg:p-12 min-w-0 order-2 lg:order-1">
-          {status === 'success' ? (
-            <div className="flex flex-col items-center justify-center h-full text-center py-12">
-              <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
-                <svg className="w-8 h-8 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                </svg>
-              </div>
-              <p className="text-xl font-semibold text-zinc-900">Email client opened</p>
-              <p className="mt-2 text-zinc-600">Please send the message from your email app. We&apos;ll reply soon.</p>
-              <button
-                type="button"
-                onClick={() => setStatus('idle')}
-                className="mt-6 px-5 py-2.5 rounded-xl text-sm font-medium text-blue-600 hover:bg-blue-50 transition-colors"
-              >
-                Send another message
-              </button>
-            </div>
-          ) : (
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div>
-                <label htmlFor="contact-name" className="block text-sm font-medium text-zinc-700 mb-2">
-                  Name
-                </label>
-                <input
-                  id="contact-name"
-                  type="text"
-                  name="name"
-                  required
-                  value={formData.name}
-                  onChange={handleChange}
-                  className={inputClass}
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label htmlFor="contact-email" className="block text-sm font-medium text-zinc-700 mb-2">
-                  E-mail
-                </label>
-                <input
-                  id="contact-email"
-                  type="email"
-                  name="email"
-                  required
-                  value={formData.email}
-                  onChange={handleChange}
-                  className={inputClass}
-                  placeholder="your@email.com"
-                />
-              </div>
-              <div>
-                <label htmlFor="contact-message" className="block text-sm font-medium text-zinc-700 mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="contact-message"
-                  name="message"
-                  required
-                  rows={4}
-                  value={formData.message}
-                  onChange={handleChange}
-                  className={`${inputClass} resize-y min-h-[100px]`}
-                  placeholder="Enter your message..."
-                />
-              </div>
-              <label className="flex items-start gap-3 cursor-pointer">
-                <input
-                  type="checkbox"
-                  name="agree"
-                  checked={formData.agree}
-                  onChange={handleChange}
-                  required
-                  className="mt-1 w-4 h-4 rounded border-2 border-zinc-300 bg-white text-blue-500 focus:ring-2 focus:ring-blue-500/30 accent-blue-500"
-                />
-                <span className="text-sm text-zinc-600">
-                  I agree to the processing of the personal data provided
-                </span>
-              </label>
-              <button
-                type="submit"
-                disabled={status === 'submitting'}
-                className="w-full py-4 rounded-2xl font-bold text-white uppercase tracking-wider bg-gradient-to-b from-blue-400 to-blue-600 shadow-lg shadow-blue-500/30 hover:shadow-blue-500/40 hover:from-blue-300 hover:to-blue-500 transition-all disabled:opacity-70 disabled:cursor-not-allowed"
-              >
-                {status === 'submitting' ? 'Sending...' : 'Send'}
-              </button>
-            </form>
-          )}
-        </div>
-
-        {/* Right Column: Info */}
-        <div className="p-8 sm:p-10 lg:p-12 bg-zinc-50 border-b lg:border-b-0 lg:border-l border-zinc-200 flex flex-col justify-center min-w-0 order-1 lg:order-2">
-          <h3 className="text-2xl md:text-3xl font-bold text-blue-600 uppercase tracking-wider">
-            Contact us
-          </h3>
-          <p className="mt-4 text-zinc-600 leading-relaxed">
-            Customer satisfaction is our top priority! Our support service is available to assist you
-            with any questions about our services: software development, consulting, project
-            inquiries, and more.
-          </p>
-          <p className="mt-6 text-zinc-500 text-sm font-medium">You can contact us any way you prefer:</p>
-
-          <div className="mt-6 grid grid-cols-4 gap-4 sm:flex sm:gap-4">
-            {[
-              { label: 'Email', href: 'mailto:info@infinya.tech', icon: 'mail' },
-              { label: 'Phone', href: 'tel:+0000000000', icon: 'phone' },
-              { label: 'Instagram', href: 'https://www.instagram.com/infinya.tech/', icon: 'instagram' },
-              { label: 'Facebook', href: 'https://www.facebook.com/share/1Cbk7mYUui/', icon: 'facebook' },
-            ].map((item) => (
-              <a
-                key={item.label}
-                href={item.href}
-                aria-label={item.label}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-12 h-12 rounded-full border-2 border-blue-200 bg-white flex items-center justify-center text-blue-600 hover:border-blue-500 hover:bg-blue-50 transition-all"
-              >
-                {item.icon === 'mail' && (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                  </svg>
-                )}
-                {item.icon === 'phone' && (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                  </svg>
-                )}
-                {item.icon === 'instagram' && (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <rect x="3" y="3" width="18" height="18" rx="5" ry="5" strokeWidth={2} />
-                    <circle cx="12" cy="12" r="4" strokeWidth={2} />
-                    <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none" />
-                  </svg>
-                )}
-                {item.icon === 'facebook' && (
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22 12a10 10 0 10-11.5 9.87v-6.99H8.08V12h2.42V9.8c0-2.4 1.43-3.72 3.62-3.72 1.05 0 2.15.19 2.15.19v2.36h-1.21c-1.2 0-1.57.75-1.57 1.51V12h2.67l-.43 2.88h-2.24v6.99A10 10 0 0022 12z" />
-                  </svg>
-                )}
-              </a>
-            ))}
-          </div>
-
-          <div className="hidden sm:block mt-8 opacity-40">
-            <svg viewBox="0 0 200 80" className="w-full h-24 text-blue-300" fill="none" stroke="currentColor" strokeWidth="0.5">
-              <circle cx="30" cy="40" r="2" fill="currentColor" />
-              <circle cx="100" cy="25" r="2" fill="currentColor" />
-              <circle cx="170" cy="40" r="2" fill="currentColor" />
-              <circle cx="100" cy="55" r="2" fill="currentColor" />
-              <line x1="30" y1="40" x2="100" y2="25" />
-              <line x1="100" y1="25" x2="170" y2="40" />
-              <line x1="170" y1="40" x2="100" y2="55" />
-              <line x1="100" y1="55" x2="30" y2="40" />
-              <line x1="100" y1="25" x2="100" y2="55" />
-            </svg>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+      {/* Contact */}
+      <Contact />
     </>
   )
 }
