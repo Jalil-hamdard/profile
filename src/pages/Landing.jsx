@@ -2,8 +2,6 @@ import { useState, useRef, useCallback } from 'react'
 import AnimatedSection from '../components/AnimatedSection'
 import Contact from '../components/Conact.jsx'
 
-
-
 // —— Hero ——
 function ArrowUpIcon({ className }) {
   return (
@@ -29,8 +27,10 @@ const EXPERTISE = [
   { title: 'Mobile App Development', subtitle: 'Performant, scalable, and secure mobile applications for iOS and Android.' },
   { title: 'Desktop Application', subtitle: 'Cross-platform desktop software for Windows, macOS, and Linux—native performance and modern UX.' },
   { title: 'UX/UI Design', subtitle: 'Beautiful, pixel-perfect, and easy-to-use designs that delight your users.' },
+  { title: 'Domain Names', subtitle: '"Strategic domain acquisition, brand protection, and DNS management to anchor your online identity."' },
+  { title: 'Web Hosting', subtitle: 'Enterprise-grade hosting solutions featuring, rapid loading speeds, and localized server optimization.' }
 ]
-const SKILLS_IMAGES = ['ai.jpg', 'cyber security.jpg', 'Software.jpg', 'Web.jpg', 'softwre development.jpg', 'computer.jpg', 'uiux.jpg']
+const SKILLS_IMAGES = ['ai.jpg', 'cyber security.jpg', 'Software.jpg', 'Web.jpg', 'softwre development.jpg', 'computer.jpg', 'uiux.jpg', 'domain.png', 'webhosting.jpg']
 const BTN_STYLE = 'bg-white/95 border-white/50 text-zinc-900 hover:bg-white'
 const getImageSrc = (filename) => `${(import.meta.env.BASE_URL || '').replace(/\/$/, '')}/Skills/${encodeURIComponent(filename)}`
 const getImageGradient = (img, callback) => {
@@ -275,6 +275,7 @@ export default function Landing() {
                   </div>
                 )}
               </div>
+              
             </article>
           )
         })}

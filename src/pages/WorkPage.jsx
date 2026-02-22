@@ -3,15 +3,6 @@ import { useState } from 'react'
 const HMS_MOBILE_IMAGE = '/HMS%20mobile.jpeg'
 const HMS_PC_IMAGE = '/HMS%20PC.png'
 const HMS_PAGES_BASE = '/HMS%20images'
-const HMS_SCREENS = [
-  { src: HMS_MOBILE_IMAGE },
-  { src: HMS_PC_IMAGE },
-  { src: `${HMS_PAGES_BASE}/1.png` },
-  { src: `${HMS_PAGES_BASE}/2.png` },
-  { src: `${HMS_PAGES_BASE}/3.png` },
-  { src: `${HMS_PAGES_BASE}/4.png` },
-]
-const HMS_SCREEN_LABELS = ['Mobile', 'Desktop', 'Dashboard', 'Rooms', 'Students', 'Payments']
 
 export default function WorkPage() {
   const [desktopImgError, setDesktopImgError] = useState(false)
@@ -22,7 +13,6 @@ export default function WorkPage() {
       {/* --- HERO SECTION --- */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-indigo-950 via-blue-950 to-slate-900" />
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_80%_50%_at_50%_-20%,rgba(99,102,241,0.25),transparent)]" />
         <div className="container-main relative py-20 sm:py-24 md:py-32 lg:py-40 px-4">
           <p className="text-blue-300/90 text-sm font-medium uppercase tracking-[0.2em] mb-4">Our Work</p>
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight max-w-4xl">
@@ -30,91 +20,105 @@ export default function WorkPage() {
             <br />
             <span className="text-blue-200/90">Real solutions for real needs.</span>
           </h1>
-          <p className="mt-6 text-base sm:text-lg text-slate-300 max-w-xl leading-relaxed">
-            Explore the software we&apos;ve delivered—from education platforms to operations tools that help businesses run better.
-          </p>
         </div>
       </section>
 
       {/* --- FEATURED PROJECT SECTION --- */}
       <section className="relative -mt-12 md:-mt-20 z-10 pb-20 px-4">
-        <div className="container-main max-w-6xl mx-auto">
+        <div className="container-main max-w-[1400px] mx-auto">
           <article className="rounded-3xl overflow-hidden bg-white shadow-2xl shadow-black/10 border border-zinc-100">
+            
             {/* Project Header */}
             <div className="px-6 sm:px-10 lg:px-12 py-8 border-b border-zinc-100">
               <span className="inline-block text-xs font-semibold text-blue-600 uppercase tracking-wider mb-2">Featured Project</span>
-              <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900 flex flex-wrap items-center gap-2">
+              <h2 className="text-2xl sm:text-3xl font-bold text-zinc-900">
                 HMS <span className="font-normal text-zinc-400 text-lg sm:text-2xl">· Hostel Management System</span>
               </h2>
             </div>
 
-            {/* Project Content Grid */}
-            <div className="grid lg:grid-cols-2">
+            {/* Main Content Grid: 66% Left (Images/Tech) | 34% Right (Text) */}
+            <div className="grid lg:grid-cols-3">
               
-              {/* Image Preview Area */}
-              <div className="bg-zinc-50 p-6 sm:p-10 flex flex-col items-center justify-center gap-6 border-b lg:border-b-0 lg:border-r border-zinc-100">
-                <div className="relative w-full">
-                  {/* Desktop Mockup */}
-                  <div className="rounded-xl overflow-hidden border border-zinc-200 shadow-xl bg-white mb-6">
-                    <div className="px-3 py-2 border-b border-zinc-100 flex items-center gap-1.5 bg-zinc-50">
-                      <span className="w-2 h-2 rounded-full bg-red-400" />
-                      <span className="w-2 h-2 rounded-full bg-amber-400" />
-                      <span className="w-2 h-2 rounded-full bg-emerald-400" />
-                    </div>
-                    <div className="aspect-video flex items-center justify-center bg-zinc-100/50">
-                      {desktopImgError ? (
-                        <span className="text-zinc-400 text-xs px-4 text-center">Desktop Preview Placeholder</span>
-                      ) : (
-                        <img src={HMS_PC_IMAGE} alt="HMS desktop" className="w-full h-full object-cover" onError={() => setDesktopImgError(true)} />
-                      )}
-                    </div>
-                  </div>
-
-                  {/* Mobile Mockup (Floating on Desktop, Stacked on Mobile) */}
-                  <div className="relative lg:absolute -bottom-4 -right-2 lg:-right-4 w-1/2 sm:w-1/3 lg:w-[180px] mx-auto lg:mx-0">
-                    <div className="rounded-[2rem] overflow-hidden border-4 border-zinc-900 shadow-2xl bg-zinc-900 aspect-[9/19]">
-                      {mobileImgError ? (
-                        <div className="w-full h-full flex items-center justify-center bg-zinc-800 text-[10px] text-zinc-500 p-4 text-center">Mobile Preview</div>
-                      ) : (
-                        <img src={HMS_MOBILE_IMAGE} alt="HMS mobile" className="w-full h-full object-cover" onError={() => setMobileImgError(true)} />
-                      )}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Text Info Area */}
-              <div className="p-8 sm:p-10 lg:p-12 flex flex-col justify-center">
-                <p className="text-zinc-600 text-base sm:text-lg leading-relaxed">
-                  We built HMS to streamline hostel operations. One platform serves multiple hostels—each with its own dashboard, students, staff, rooms, leave requests, and payments. Deployed once, scaled everywhere.
-                </p>
+              {/* LEFT SIDE (66.6% width) */}
+              <div className="lg:col-span-2 bg-zinc-50 p-6 sm:p-10 lg:p-14 flex flex-col border-b lg:border-b-0 lg:border-r border-zinc-100">
                 
-                <div className="mt-8 space-y-4">
-                  <h4 className="text-sm font-bold text-zinc-900 uppercase tracking-widest">Core Capabilities</h4>
-                  <ul className="space-y-3">
-                    {[
-                      'Student & staff registration, room allocation, leave tracking',
-                      'Automated fee and salary calculations',
-                      'Per-hostel dashboards, PostgreSQL multi-tenancy'
-                    ].map((item, idx) => (
-                      <li key={idx} className="flex items-start gap-3 text-sm text-zinc-600">
-                        <span className="mt-1 flex-shrink-0 w-1.5 h-1.5 rounded-full bg-blue-500" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                {/* Images Container */}
+                <div className="flex flex-col md:flex-row items-center justify-between gap-8 lg:gap-12 flex-grow mb-12">
+                  
+                  {/* Desktop Mockup - Primary Focus */}
+                  <div className="flex-[2.5] w-full rounded-xl overflow-hidden border border-zinc-200 shadow-2xl bg-white">
+                    <div className="px-3 py-2 border-b border-zinc-100 flex items-center gap-1.5 bg-zinc-50">
+                      <div className="flex gap-1.5">
+                        <span className="w-2.5 h-2.5 rounded-full bg-red-400" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-400" />
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-400" />
+                      </div>
+                      <div className="mx-auto bg-zinc-200 h-1.5 w-1/3 rounded-full opacity-50" />
+                    </div>
+                    <div className="aspect-[16/10] bg-white overflow-hidden">
+                      {desktopImgError ? (
+                        <div className="w-full h-full flex items-center justify-center text-zinc-400 text-xs">Desktop Image Missing</div>
+                      ) : (
+                        <img 
+                          src={HMS_PC_IMAGE} 
+                          alt="Desktop View" 
+                          className="w-full h-full object-contain" 
+                          onError={() => setDesktopImgError(true)} 
+                        />
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Phone Mockup - Scaled Down Secondary View */}
+                  <div className="flex-1 min-w-[140px] max-w-[180px] shrink-0">
+                    <div className="rounded-[2.5rem] border-[6px] border-zinc-300 bg-white shadow-xl aspect-[9/19] relative overflow-hidden flex items-center justify-center p-1">
+                      {mobileImgError ? (
+                        <div className="text-[10px] text-zinc-400">Mobile Missing</div>
+                      ) : (
+                        <img 
+                          src={HMS_MOBILE_IMAGE} 
+                          alt="Mobile View" 
+                          className="w-full h-full object-contain rounded-[1.8rem]" 
+                          onError={() => setMobileImgError(true)} 
+                        />
+                      )}
+                    </div>
+                  </div>
                 </div>
 
-                <div className="mt-10 pt-8 border-t border-zinc-100">
-                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-3">Tech Stack</p>
-                  <div className="flex flex-wrap gap-2">
-                    {['Django', 'React', 'PostgreSQL', 'REST API'].map(tech => (
-                      <span key={tech} className="px-3 py-1 bg-zinc-100 text-zinc-600 text-xs font-medium rounded-full">
+                {/* Tech Stack - Positioned at bottom of the image area */}
+                <div className="pt-8 border-t border-zinc-200 mt-auto">
+                  <p className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-4">Core Technology Stack</p>
+                  <div className="flex flex-wrap gap-3">
+                    {['Django', 'React', 'PostgreSQL', 'REST API', 'Tailwind CSS'].map(tech => (
+                      <span key={tech} className="px-4 py-2 bg-white border border-zinc-200 text-zinc-700 text-xs font-bold rounded-lg shadow-sm">
                         {tech}
                       </span>
                     ))}
                   </div>
                 </div>
+              </div>
+
+              {/* RIGHT SIDE (33.3% width) */}
+              <div className="lg:col-span-1 p-8 sm:p-10 lg:p-12 bg-white flex flex-col justify-start">
+                <h4 className="text-sm font-bold text-zinc-900 uppercase tracking-widest mb-6 border-b border-zinc-100 pb-2 text-blue-600">Project Overview</h4>
+                <p className="text-zinc-600 text-base leading-relaxed mb-8">
+                  We built HMS to streamline hostel operations. One platform serves multiple hostels—each with its own dashboard, students, staff, rooms, leave requests, and payments. Deployed once, scaled everywhere.
+                </p>
+                
+                <h4 className="text-sm font-bold text-zinc-900 uppercase tracking-widest mb-4">Core Capabilities</h4>
+                <ul className="space-y-5">
+                  {[
+                    'Student & staff registration, room allocation, leave tracking',
+                    'Automated fee and salary calculations',
+                    'Per-hostel dashboards, PostgreSQL multi-tenancy'
+                  ].map((item, idx) => (
+                    <li key={idx} className="flex items-start gap-4 text-sm text-zinc-600 leading-snug">
+                      <span className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-blue-500 shadow-md shadow-blue-200" />
+                      {item}
+                    </li>
+                  ))}
+                </ul>
               </div>
 
             </div>
