@@ -197,59 +197,109 @@ export default function Landing() {
       </section>
 
       {/* Full-stack expertise */}
-      <section id="services" className="section-normal relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-blue-50/30 pointer-events-none" aria-hidden />
-        <div className="container-main relative">
-          <div className="text-center max-w-3xl mx-auto mb-16 md:mb-20 pt-2">
-            <span className="inline-block px-4 py-1.5 rounded-full text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200/60 mb-4">Everything we do</span>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-bold text-zinc-900 tracking-tight leading-[1.15]">From Concept to Completion: Our Full-Stack Expertise.</h2>
-            <div className="mt-4 w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 mx-auto" />
-            <p className="mt-6 text-lg text-zinc-600">Seven pillars of expertise that power your product from idea to launch and beyond.</p>
-          </div>
-          <div className="relative mt-10 md:mt-12">
-            <div className="full-stack-carousel flex gap-7 overflow-x-auto pb-6 snap-x snap-mandatory scroll-smooth" ref={scrollRef} onScroll={handleScroll}>
-              {EXPERTISE.map((item, i) => {
-                const imgSrc = getImageSrc(SKILLS_IMAGES[i])
-                const imageFailed = loadedImages[i] === false
-                return (
-                  <article key={item.title} data-card className="shrink-0 w-[360px] sm:w-[420px] snap-center group">
-                    <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200/80 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 hover:border-zinc-300/80 relative h-[520px] bg-zinc-100">
-                      {!imageFailed ? (
-                        <>
-                          <div className="absolute top-0 left-0 right-0 h-[320px] z-0">
-                            <img src={imgSrc} alt="" className="w-full h-full object-cover" onError={() => handleImageError(i)} onLoad={(e) => handleImageLoad(e, i)} />
-                          </div>
-                          <div className="absolute bottom-0 left-0 right-0 top-[320px] z-[1]" style={{ background: barColors[i] ?? '#000000' }} aria-hidden />
-                          <div className="absolute bottom-0 left-0 right-0 p-6 flex flex-col text-white z-[2]">
-                            <h3 className="text-xl font-bold leading-tight tracking-tight">{item.title}</h3>
-                            <p className="mt-3 text-sm text-white/90 line-clamp-3 leading-relaxed">{item.subtitle}</p>
-                            <a href="#contact" className={`mt-5 inline-flex items-center gap-1.5 self-start px-4 py-2.5 rounded-xl text-sm font-semibold border-2 transition-all duration-200 ${BTN_STYLE}`}>
-                              Read more
-                              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg>
-                            </a>
-                          </div>
-                        </>
-                      ) : (
-                        <div className="absolute inset-0 z-0 bg-zinc-200 rounded-2xl p-6 flex flex-col text-zinc-900">
-                          <h3 className="text-xl font-bold leading-tight tracking-tight">{item.title}</h3>
-                          <p className="mt-3 text-sm line-clamp-3 leading-relaxed">{item.subtitle}</p>
-                          <a href="#contact" className="mt-5 inline-flex items-center gap-1.5 self-start px-4 py-2.5 rounded-xl text-sm font-semibold border-2 border-zinc-400 text-zinc-800 hover:bg-zinc-300">Read more <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" /></svg></a>
-                        </div>
-                      )}
+<section id="services" className="py-16 md:py-24 relative overflow-hidden px-4">
+  <div className="absolute inset-0 bg-gradient-to-b from-slate-50 via-white to-blue-50/30 pointer-events-none" aria-hidden />
+  <div className="container-main relative max-w-7xl mx-auto">
+    <div className="text-center max-w-3xl mx-auto mb-12 md:mb-20">
+      <span className="inline-block px-4 py-1.5 rounded-full text-xs md:text-sm font-semibold text-blue-600 bg-blue-50 border border-blue-200/60 mb-4">
+        Everything we do
+      </span>
+      <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[2.75rem] font-bold text-zinc-900 tracking-tight leading-tight">
+        From Concept to Completion: Our Full-Stack Expertise.
+      </h2>
+      <div className="mt-4 w-16 h-1 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 mx-auto" />
+      <p className="mt-6 text-base md:text-lg text-zinc-600">
+        Seven pillars of expertise that power your product from idea to launch and beyond.
+      </p>
+    </div>
+
+    <div className="relative mt-8 md:mt-12">
+      {/* Scrollable Container - Hid scrollbar for cleaner mobile look */}
+      <div 
+        className="flex gap-5 md:gap-7 overflow-x-auto pb-8 snap-x snap-mandatory scroll-smooth scrollbar-hide" 
+        ref={scrollRef} 
+        onScroll={handleScroll}
+        style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+      >
+        {EXPERTISE.map((item, i) => {
+          const imgSrc = getImageSrc(SKILLS_IMAGES[i])
+          const imageFailed = loadedImages[i] === false
+          return (
+            <article key={item.title} data-card className="shrink-0 w-[290px] sm:w-[360px] md:w-[420px] snap-center group">
+              <div className="rounded-2xl overflow-hidden shadow-lg border border-zinc-200/80 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/10 hover:-translate-y-1 hover:border-zinc-300/80 relative h-[480px] md:h-[520px] bg-zinc-100">
+                {!imageFailed ? (
+                  <>
+                    <div className="absolute top-0 left-0 right-0 h-[280px] md:h-[320px] z-0">
+                      <img 
+                        src={imgSrc} 
+                        alt="" 
+                        className="w-full h-full object-cover" 
+                        onError={() => handleImageError(i)} 
+                        onLoad={(e) => handleImageLoad(e, i)} 
+                      />
                     </div>
-                  </article>
-                )
-              })}
-            </div>
-            <button type="button" onClick={() => scrollTo(scrollIndex - 1)} aria-label="Previous cards" className="hidden sm:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 w-12 h-12 rounded-full bg-white border border-zinc-200 shadow-lg items-center justify-center text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-300 transition-all z-10">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button type="button" onClick={() => scrollTo(scrollIndex + 1)} aria-label="Next cards" className="hidden sm:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1 w-12 h-12 rounded-full bg-white border border-zinc-200 shadow-lg items-center justify-center text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 hover:border-zinc-300 transition-all z-10">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
-            </button>
-          </div>
-        </div>
-      </section>
+                    <div 
+                      className="absolute bottom-0 left-0 right-0 top-[280px] md:top-[320px] z-[1]" 
+                      style={{ background: barColors[i] ?? '#000000' }} 
+                      aria-hidden 
+                    />
+                    <div className="absolute bottom-0 left-0 right-0 p-5 md:p-6 flex flex-col text-white z-[2]">
+                      <h3 className="text-lg md:text-xl font-bold leading-tight tracking-tight">
+                        {item.title}
+                      </h3>
+                      <p className="mt-2 md:mt-3 text-xs md:text-sm text-white/90 line-clamp-3 leading-relaxed">
+                        {item.subtitle}
+                      </p>
+                      <a href="#contact" className={`mt-4 md:mt-5 inline-flex items-center gap-1.5 self-start px-4 py-2.5 rounded-xl text-xs md:text-sm font-semibold border-2 transition-all duration-200 ${BTN_STYLE}`}>
+                        Read more
+                        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                      </a>
+                    </div>
+                  </>
+                ) : (
+                  <div className="absolute inset-0 z-0 bg-zinc-200 rounded-2xl p-6 flex flex-col text-zinc-900 justify-end">
+                    <h3 className="text-xl font-bold leading-tight tracking-tight">{item.title}</h3>
+                    <p className="mt-3 text-sm line-clamp-3 leading-relaxed">{item.subtitle}</p>
+                    <a href="#contact" className="mt-5 inline-flex items-center gap-1.5 self-start px-4 py-2.5 rounded-xl text-sm font-semibold border-2 border-zinc-400 text-zinc-800 hover:bg-zinc-300">
+                      Read more 
+                      <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                      </svg>
+                    </a>
+                  </div>
+                )}
+              </div>
+            </article>
+          )
+        })}
+      </div>
+
+      {/* Navigation Buttons - Hidden on smallest mobile for better touch experience */}
+      <button 
+        type="button" 
+        onClick={() => scrollTo(scrollIndex - 1)} 
+        aria-label="Previous cards" 
+        className="hidden md:flex absolute -left-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-zinc-200 shadow-lg items-center justify-center text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 transition-all z-10"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+        </svg>
+      </button>
+      <button 
+        type="button" 
+        onClick={() => scrollTo(scrollIndex + 1)} 
+        aria-label="Next cards" 
+        className="hidden md:flex absolute -right-4 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full bg-white border border-zinc-200 shadow-lg items-center justify-center text-zinc-600 hover:bg-zinc-50 hover:text-zinc-900 transition-all z-10"
+      >
+        <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+        </svg>
+      </button>
+    </div>
+  </div>
+</section>
 
       {/* Process */}
       <section className="section-normal bg-section-muted">
@@ -296,12 +346,15 @@ export default function Landing() {
         </div>
       </section>
 
-      {/* Contact */}
-              <section id="contact" className="section-normal relative overflow-hidden bg-white">
-  <div className="container-main relative max-w-5xl">
+   {/* Contact Section */}
+<section id="contact" className="section-normal relative overflow-hidden bg-white py-12 px-4">
+  <div className="container-main relative max-w-5xl mx-auto">
     <div className="rounded-3xl border border-zinc-200 bg-white shadow-xl overflow-hidden">
-      <div className="grid grid-cols-2 min-h-[420px]">
-        <div className="p-4 sm:p-6 md:p-8 lg:p-10 min-w-0">
+      {/* Changed to grid-cols-1 for mobile, lg:grid-cols-2 for desktop */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[420px]">
+        
+        {/* Left Column: Form */}
+        <div className="p-6 sm:p-8 md:p-10 lg:p-12 min-w-0 order-2 lg:order-1">
           {status === 'success' ? (
             <div className="flex flex-col items-center justify-center h-full text-center py-12">
               <div className="w-16 h-16 rounded-full bg-emerald-100 flex items-center justify-center mb-4">
@@ -390,7 +443,8 @@ export default function Landing() {
           )}
         </div>
 
-        <div className="p-4 sm:p-6 md:p-8 lg:p-10 bg-zinc-50 border-l border-zinc-200 flex flex-col justify-center min-w-0">
+        {/* Right Column: Info */}
+        <div className="p-8 sm:p-10 lg:p-12 bg-zinc-50 border-b lg:border-b-0 lg:border-l border-zinc-200 flex flex-col justify-center min-w-0 order-1 lg:order-2">
           <h3 className="text-2xl md:text-3xl font-bold text-blue-600 uppercase tracking-wider">
             Contact us
           </h3>
@@ -399,30 +453,14 @@ export default function Landing() {
             with any questions about our services: software development, consulting, project
             inquiries, and more.
           </p>
-          <p className="mt-3 text-zinc-500 text-sm">You can contact us any way you prefer:</p>
+          <p className="mt-6 text-zinc-500 text-sm font-medium">You can contact us any way you prefer:</p>
 
-          <div className="mt-6 flex gap-3">
+          <div className="mt-6 grid grid-cols-4 gap-4 sm:flex sm:gap-4">
             {[
-              {
-                label: 'Email',
-                href: 'mailto:info@infinya.tech',
-                icon: 'mail',
-              },
-              {
-                label: 'Phone',
-                href: 'tel:+0000000000',
-                icon: 'phone',
-              },
-              {
-                label: 'Instagram',
-                href: 'https://www.instagram.com/infinya.tech/',
-                icon: 'instagram',
-              },
-              {
-                label: 'Facebook',
-                href: 'https://www.facebook.com/share/1Cbk7mYUui/',
-                icon: 'facebook',
-              },
+              { label: 'Email', href: 'mailto:info@infinya.tech', icon: 'mail' },
+              { label: 'Phone', href: 'tel:+0000000000', icon: 'phone' },
+              { label: 'Instagram', href: 'https://www.instagram.com/infinya.tech/', icon: 'instagram' },
+              { label: 'Facebook', href: 'https://www.facebook.com/share/1Cbk7mYUui/', icon: 'facebook' },
             ].map((item) => (
               <a
                 key={item.label}
@@ -458,7 +496,7 @@ export default function Landing() {
             ))}
           </div>
 
-          <div className="mt-8 opacity-40">
+          <div className="hidden sm:block mt-8 opacity-40">
             <svg viewBox="0 0 200 80" className="w-full h-24 text-blue-300" fill="none" stroke="currentColor" strokeWidth="0.5">
               <circle cx="30" cy="40" r="2" fill="currentColor" />
               <circle cx="100" cy="25" r="2" fill="currentColor" />
