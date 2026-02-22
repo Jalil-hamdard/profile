@@ -14,7 +14,7 @@ const LEADERSHIP = [
     image: '/cto.jpeg',
     name: 'Abdul Jalil Stanikzai',
     role: 'Founder & Chief Technology Officer',
-    bio: 'Architecting high-performance systems and AI-driven roadmaps. Abdul leads our engineering standards, ensuring scalability and security are at the core of every product deployed across our 50+ technology stacks.',
+    bio: 'Architecting high-performance systems and AI-driven roadmaps. Stanikzai leads our engineering standards, ensuring scalability and security are at the core of every product deployed across our 50+ technology stacks.',
     tags: ['System Architecture', 'AI Governance', 'Engineering'],
   },
 ]
