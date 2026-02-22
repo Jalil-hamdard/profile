@@ -7,7 +7,7 @@ export default function BairesFooter() {
           <p className="text-sm text-zinc-500">Get in touch. Infinya – Afghanistan.</p>
           <div className="mt-4 flex flex-wrap gap-4 md:gap-6">
             <a href="mailto:officialinfinya.help@gmail.com" className="text-white font-medium hover:underline">officialinfinya.help@gmail.com</a>
-            <a href="tel:+930795345288" className="text-white font-medium hover:underline">0795345288</a>
+            <a href="tel:+930795345288" className="text-white font-medium hover:underline">(+93) 78 3637 033</a>
           </div>
         </div>
         <div className="mt-10 flex flex-wrap gap-4 text-sm text-zinc-500">
