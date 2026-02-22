@@ -111,7 +111,8 @@ export default function WorkPage() {
                   {[
                     'Student & staff registration, room allocation, leave tracking',
                     'Automated fee and salary calculations',
-                    'Per-hostel dashboards, PostgreSQL multi-tenancy'
+                    'Per-hostel dashboards, PostgreSQL multi-tenancy',
+                    'Support three different languages (English, Dari, Pashto)',
                   ].map((item, idx) => (
                     <li key={idx} className="flex items-start gap-4 text-sm text-zinc-600 leading-snug">
                       <span className="mt-1.5 flex-shrink-0 w-2 h-2 rounded-full bg-blue-500 shadow-md shadow-blue-200" />
