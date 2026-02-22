@@ -1,0 +1,5 @@
+npm# https://www.robotstxt.org/robotstxt.html
+User-agent: *
+Allow: /
+
+Sitemap: https://infinya.netlify.app/sitemap.xml
