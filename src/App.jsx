@@ -1,4 +1,5 @@
 import { Routes, Route } from 'react-router-dom'
+import ScrollToTop from './components/ScrollToTop' // Changed from ScrollToBottom
 import BairesHeader from './components/BairesHeader.jsx'
 import BairesFooter from './components/BairesFooter'
 import Landing from './pages/Landing'
@@ -8,6 +9,9 @@ import WorkPage from './pages/WorkPage'
 function App() {
   return (
     <>
+      {/* This ensures every new page starts cleanly at the top */}
+      <ScrollToTop />
+      
       <BairesHeader />
       <main>
         <Routes>
